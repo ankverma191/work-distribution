@@ -1,0 +1,15 @@
+server:
+  port: 9091
+
+spring:
+  application:
+    name: work-distribution
+
+
+logging:
+  level:
+    org:
+      framework:
+        web: INFO
+        controller: INFO
+  file: logs/${spring.application.name}.log
