@@ -25,7 +25,7 @@ public class WorkDistributionExceptionHandler extends ResponseEntityExceptionHan
     @ExceptionHandler(value = { NoDataFoundException.class , NoAgentFoundException.class })
     public @ResponseBody
     ResponseEntity<ErrorModel> handleDistributionException(RuntimeException ex, WebRequest request) {
-        return new ResponseEntity<>(buildErrorModel(ex, request), NOT_FOUND);
+        return new ResponseEntity<>(buildErrorModel(ex), NOT_FOUND);
     }
 
     private ErrorModel buildErrorModel(final Exception ex) {
