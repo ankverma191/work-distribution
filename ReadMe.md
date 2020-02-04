@@ -12,7 +12,7 @@ The system will assign the tasks to the agents using the following rules:
 - If all agents are currently working on a lower priority task, the system will pick the agent that started working on his/her current task the most recently.
 - If no agent is able to take the task, the service should return an error
 
-
+**API Documentation**
 
 | API                          | TYPE | REQUEST           | RESPONSE                 |
 | ---------------------------- | ---- | ----------------- | ------------------------ |
@@ -20,14 +20,39 @@ The system will assign the tasks to the agents using the following rules:
 | /work/distribution           | PUT  | TaskUpdateRequest | Task                     |
 | /work/distribution/agentList | GET  |                   | Map<AgentId, List<Task>> |
 
-Error Responses
+**Error Responses**
 
 | Error                 | Message                                  |
 | --------------------- | ---------------------------------------- |
-| NoDataFoundException  | No Data is found for the input type.     |
+| NoDataFoundException  | No Data is found for the input task type |
 | NoAgentFoundException | No Agent is found for the follwing Task. |
 
+**Input Models** 
 
+1. TaskRequest
+
+    
+
+   ```json
+   {
+     "priority": "LOW",
+     "skill": [
+       "SKILL_1"
+     ]
+   }
+   ```
+
+   
+
+2. TaskUpdateRequest
+
+   ```JSOn
+   {
+     "taskId": "string"
+   }
+   ```
+
+   
 
 Swagger Documention can be seen at:
 
