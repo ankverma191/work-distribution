@@ -71,9 +71,7 @@ mvn clean install
 java -jar <app-name>.jar
 ```
 
-
-
-
+> We are using lombok so enable lombok plugin 
 
 
 
