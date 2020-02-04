@@ -4,6 +4,24 @@ server:
 spring:
   application:
     name: work-distribution
+  h2:
+    console:
+      enabled: true
+      settings:
+        trace: false
+        web-allow-others: false
+  datasource:
+    hikari:
+      jdbc-url: jdbc:h2:mem:agent-task
+      driver-class-name: org.h2.Driver
+      username: sa
+      password: password
+    initialization-mode: always
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
 
 
 logging:
@@ -11,5 +29,6 @@ logging:
     org:
       framework:
         web: INFO
-        controller: INFO
-  file: logs/${spring.application.name}.log
+        controller: WARN
+  file:
+    name: logs/${spring.application.name}.log

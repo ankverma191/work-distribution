@@ -66,7 +66,7 @@ public class WorkDistributionController {
     )
     @LogExecutionTime()
     @GetMapping(value = "/agentList" , produces = APPLICATION_JSON_VALUE)
-    public @ResponseBody ResponseEntity<Map<Agent, List<Task>>> getAllAgents() {
+    public @ResponseBody ResponseEntity<Map<Integer, List<Task>>> getAllAgents() {
         return new ResponseEntity<>(workDistributionService.getAllAgents() , HttpStatus.OK);
     }
 }
