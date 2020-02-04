@@ -71,7 +71,7 @@ mvn clean install
 java -jar <app-name>.jar
 ```
 
-> We are using lombok so enable lombok plugin 
+> We are using lombok so enable lombok plugin in intellij or if using eclipse https://www.baeldung.com/lombok-ide
 
 
 
