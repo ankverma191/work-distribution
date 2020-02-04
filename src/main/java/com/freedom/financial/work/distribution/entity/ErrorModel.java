@@ -2,6 +2,7 @@ package com.freedom.financial.work.distribution.entity;
 
 import lombok.Builder;
 import lombok.Getter;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Builder
 @Getter
