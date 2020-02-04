@@ -9,4 +9,8 @@ public class  ErrorModel {
     private String message;
     private String traceId;
     private String method;
+    @JsonProperty("class")
+    private String className;
+    private Integer lineNumber;
+    private String fileName;
 }
