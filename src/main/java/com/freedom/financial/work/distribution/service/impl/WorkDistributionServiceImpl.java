@@ -19,18 +19,18 @@ import java.util.Map;
 @Service
 public class WorkDistributionServiceImpl implements WorkDistributionService {
 
-    private final TaskRuleEngine taskValidator;
+    private final TaskRuleEngine taskRuleEngine;
     private final TaskRepository taskRepository;
 
-    public WorkDistributionServiceImpl(final TaskRuleEngine taskValidator , final TaskRepository taskRepository) {
+    public WorkDistributionServiceImpl(final TaskRuleEngine taskRuleEngine , final TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
-        this.taskValidator = taskValidator;
+        this.taskRuleEngine = taskRuleEngine;
     }
 
     @Override
     public Task createTask(final TaskRequest taskRequest) throws NoAgentFoundException {
         final Task task = Task.build(taskRequest);
-        task.setAgentId(taskValidator.execute(task));
+        task.setAgentId(taskRuleEngine.execute(task));
         return taskRepository.save(task);
     }
 
@@ -46,7 +46,7 @@ public class WorkDistributionServiceImpl implements WorkDistributionService {
     public Map<Integer, List<Task>> getAllAgents() {
         final Map<Integer, List<Task>> taskMap = new HashMap<>();
         final List<Task> tasks = taskRepository.findTasksByStatusIn(Status.PENDING.name(), Status.STARTED.name());
-         tasks.stream().forEach(task -> {
+         tasks.forEach(task -> {
             final int agent =  task.getAgentId();
                 List<Task> tasksList = taskMap.get(agent);
                  if (CollectionUtils.isEmpty(tasksList)) {
