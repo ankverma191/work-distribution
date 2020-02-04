@@ -20,6 +20,13 @@ The system will assign the tasks to the agents using the following rules:
 | /work/distribution           | PUT  | TaskUpdateRequest | Task                     |
 | /work/distribution/agentList | GET  |                   | Map<AgentId, List<Task>> |
 
+Error Responses
+
+| Error                 | Message                                  |
+| --------------------- | ---------------------------------------- |
+| NoDataFoundException  | No Data is found for the input type.     |
+| NoAgentFoundException | No Agent is found for the follwing Task. |
+
 
 
 Swagger Documention can be seen at:
