@@ -39,15 +39,9 @@ public class WorkDistributionServiceTest {
         inputTask.setSkillSetList("SKILL_1");
         inputTask.setStatus(Status.PENDING.name());
         inputTask.setTimestamp(Timestamp.valueOf(LocalDateTime.now()));
-
         workDistributionService = new WorkDistributionServiceImpl(taskRuleEngine , taskRepository);
-
         Mockito.when(taskRepository.findById("1")).thenReturn(Optional.of(inputTask));
         Mockito.when(taskRepository.findTasksByStatusIn(Status.PENDING.name(), Status.STARTED.name())).thenReturn(Collections.singletonList(inputTask));
-
-
-
-
         Task outputTask  = new Task();
         outputTask.setTaskId(UUID.randomUUID().toString());
         outputTask.setAgentId(1);
@@ -55,9 +49,7 @@ public class WorkDistributionServiceTest {
         outputTask.setSkillSetList("SKILL_1");
         outputTask.setStatus(Status.COMPLETED.name());
         outputTask.setTimestamp(Timestamp.valueOf(LocalDateTime.now()));
-
         Mockito.when(taskRepository.save(ArgumentMatchers.any(Task.class))).thenReturn(outputTask);
-        Mockito.when(taskRuleEngine.execute(inputTask)).thenReturn(1);
     }
 
     @Test
