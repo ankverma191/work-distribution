@@ -1,4 +1,4 @@
-package com.freedom.financial.work.distribution.service.engine.engines;
+package com.freedom.financial.work.distribution.service;
 
 import com.freedom.financial.work.distribution.engine.engines.TaskRuleEngine;
 import com.freedom.financial.work.distribution.entity.Agent;
