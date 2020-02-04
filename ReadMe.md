@@ -46,7 +46,7 @@ The system will assign the tasks to the agents using the following rules:
 
 2. TaskUpdateRequest
 
-   ```JSOn
+   ```json
    {
      "taskId": "string"
    }
@@ -61,6 +61,8 @@ Swagger Documention can be seen at:
 Database : H2 in memory DB 
 
 > Console : http://localhost:9091/h2-console
+> username: sa
+> password: password
 
 Build commands 
 
