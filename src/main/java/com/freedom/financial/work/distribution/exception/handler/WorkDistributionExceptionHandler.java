@@ -28,11 +28,14 @@ public class WorkDistributionExceptionHandler extends ResponseEntityExceptionHan
         return new ResponseEntity<>(buildErrorModel(ex, request), NOT_FOUND);
     }
 
-    private ErrorModel buildErrorModel(final Exception ex , WebRequest request) {
+    private ErrorModel buildErrorModel(final Exception ex) {
         return ErrorModel.builder().
                 traceId(tracer.currentSpan().context().traceIdString()).
                 message(ex.getMessage()).
                 method(ex.getStackTrace()[0].getMethodName()).
+                className(ex.getStackTrace()[0].getClassName()).
+                fileName(ex.getStackTrace()[0].getFileName()).
+                lineNumber(ex.getStackTrace()[0].getLineNumber()).
                 build();
     }
 }
