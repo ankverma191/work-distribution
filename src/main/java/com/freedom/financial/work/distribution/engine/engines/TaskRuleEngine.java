@@ -12,10 +12,7 @@ import com.google.common.collect.ImmutableList;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Component("taskValidator")
 public class TaskRuleEngine implements RuleEngine<Task, NoAgentFoundException, Integer> {
@@ -83,7 +80,15 @@ public class TaskRuleEngine implements RuleEngine<Task, NoAgentFoundException, I
                 taskList.forEach(task -> buildAgentMap(agentMap , task != null && task.getAgentId() != null ? "a" : "n" , a));
             }
         });
-        return ImmutableList.of(agentMap.get("n") , agentMap.get("a")).asList().get(0);
+
+        ImmutableList.Builder<Agent> aList = ImmutableList.builder();
+        if (!CollectionUtils.isEmpty(agentMap.get("n"))) {
+            aList.addAll(agentMap.get("n"));
+        }
+        if (!CollectionUtils.isEmpty(agentMap.get("a"))) {
+            aList.addAll(agentMap.get("a"));
+        }
+        return aList.build();
     }
 
     private List<Agent> sortByLocalDateTime(final List<Agent> agents) {
