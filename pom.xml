@@ -87,5 +87,6 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+		<finalName>work-distribution</finalName>
 	</build>
 </project>
